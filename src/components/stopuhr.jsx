@@ -41,10 +41,16 @@ export function Stopuhr() {
   // Schritt 4: Pausebutton
   // Schritt 5: Stopbutton
 
+  const [state, setState] = useState({
+    isPaused: false,
+    timePassed: 0,
+  });
+  // const [isPaused, setIsPause] = useState(false);
   const [timeRef, setTimeRef] = useState(null);
-  const [timepassed, setTimepased] = useState(0);
-  const [hours, minutes, seconds, hundreds] =
-    millisecondsToParts(timePassedInMs);
+  // const [timePassed, setTimePassed] = useState(0);
+  const [hours, minutes, seconds, hundreds] = millisecondsToParts(
+    state.timePassed
+  );
 
   useEffect(() => {
     return () => {
@@ -58,30 +64,54 @@ export function Stopuhr() {
     if (timeRef !== null) {
       clearInterval(timeRef);
     }
-    setTimepased(0);
+    setState({
+      timePassed: 0,
+      isPause: false,
+    });
     setTimeRef(
       setInterval(() => {
-        setTimepased((oldValue) => {
-          return oldValue + 100;
+        setState((oldValue) => {
+          if (oldValue.isPaused) {
+            return oldValue;
+          }
+          return {
+            ...oldValue,
+            timePassed: oldValue.timePassed + 100,
+          };
         });
       }, 100)
     );
   };
-  const pauseClicked = () => {};
-  const stopClicked = () => {};
+  const pauseClicked = () => {
+    setState((oldState) => {
+      return {
+        ...oldState,
+        isPaused: !oldState.isPaused,
+      };
+    });
+  };
+  const stopClicked = () => {
+    if (timeRef !== null) {
+      clearInterval(timeRef);
+    }
+    setState({
+      timePassed: 0,
+      isPaused: false,
+    });
+  };
 
   return (
     <div>
       <h1>Stoppuhr</h1>
       <p>{formatTime(hours, minutes, seconds, hundreds)}</p>
       <div>
-        <button type="button" onclick={startClicked}>
+        <button type="button" onClick={startClicked}>
           Start
         </button>
-        <button type="button" onclick={pauseClicked}>
+        <button type="button" onClick={pauseClicked}>
           Pause
         </button>
-        <button type="button" onclick={stopClicked}>
+        <button type="button" onClick={stopClicked}>
           Stopp
         </button>
       </div>

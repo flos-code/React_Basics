@@ -7,6 +7,11 @@ import { Apple } from './components/Apple';
 import { Countdown } from './components/Countdown';
 import { CountdownMemo } from './components/CountdownMemo';
 import { Stopuhr } from './components/stopuhr';
+import { CourseOverview } from './components/CourseOverview';
+import { Button } from './components/Button';
+import { Status } from './components/Status';
+import { LinkOverview } from './components/LinkOverview';
+import { MousePosition } from './components/MousePosition';
 
 const nameObj = {
   prename: 'Florian',
@@ -26,7 +31,12 @@ root.render(
     {/* <Apple /> */}
     {/* <Countdown /> */}
     {/* <CountdownMemo /> */}
-    <Stopuhr />
+    {/* <Stopuhr /> */}
+    {/* <CourseOverview /> */}
+    {/* <Button /> */}
+    {/* <Status /> */}
+    {/* <LinkOverview /> */}
+    <MousePosition />
   </React.StrictMode>
 );
 
