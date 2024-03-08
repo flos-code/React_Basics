@@ -12,6 +12,11 @@ import { Button } from './components/Button';
 import { Status } from './components/Status';
 import { LinkOverview } from './components/LinkOverview';
 import { MousePosition } from './components/MousePosition';
+import { Theming } from './components/Theming';
+import { WeatherOverview } from './components/WeatherOverview';
+import { Tasks } from './components/Tasks';
+import { Wrapper } from './components/Wrapper';
+import { Condition } from './components/condition';
 
 const nameObj = {
   prename: 'Florian',
@@ -36,7 +41,12 @@ root.render(
     {/* <Button /> */}
     {/* <Status /> */}
     {/* <LinkOverview /> */}
-    <MousePosition />
+    {/* <MousePosition /> */}
+    {/* <Theming /> */}
+    {/* <WeatherOverview /> */}
+    {/* <Tasks /> */}
+    {/* <Wrapper /> */}
+    <Condition />
   </React.StrictMode>
 );
 
